@@ -30,7 +30,7 @@ Master_data <- Master_data %>% mutate(AGE_BAND = cut(as.numeric(Master_data$AGE_
 Pop_by_age_area <- Master_data %>% group_by(AGE_BAND,AREA_NAME) %>% summarise_if(is.numeric,sum)
 
 # Put the data into a tidy format - so that 'year' is a single column:
-Pop_by_age_area_year <- Pop_by_age %>% 
+Pop_by_age_area_year <- Pop_by_age_area %>% 
   melt(id.vars=c("AREA_NAME","AGE_BAND"),variable.name="Year",value.name="Population") %>% 
   mutate(Year=as.numeric(as.character(Year)))
 
